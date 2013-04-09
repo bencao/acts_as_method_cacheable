@@ -14,10 +14,9 @@ class Schema < ActiveRecord::Migration
       t.references :post
     end
   end
+
 end
-schema = Schema.new
-schema.down
-schema.up
+Schema.new.change
 
 require 'acts_as_method_cacheable'
 

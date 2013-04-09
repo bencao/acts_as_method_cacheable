@@ -4,7 +4,7 @@ Instead of writing def expensive { @cached_expensive ||= original_expensive }, n
 *This gem depend on ActiveSupport/ActiveRecord*
 
 ## Currernt Limitation
-*ONLY support method with no params*
+**ONLY support method with no params**
 
 ## Installation
 
@@ -23,7 +23,7 @@ Or install it yourself as:
 ## Usage
 
 ### cache method in class level, all instances will have the method cached
-*NOTE!! MUST put acts_as_method_cacheable in the last of the class file*
+**NOTE!! MUST put acts_as_method_cacheable in the last of the class file**
 ```ruby
 class Post < ActiveRecord::Base
   def expensive_method
@@ -64,4 +64,27 @@ post.expensive_method  # expensive
 post.expensive_method  # cheap!
 post.reset_cache(:expensive_method)
 post.expensive_method  # expensive
+```
+
+## Contribute
+
+You're highly welcome to improve this gem.
+
+### Checkout source code to local
+say you git clone the source code to /tmp/acts_as_method_cacheable
+
+### Install dev bundle
+```bash
+cd /tmp/acts_as_method_cacheable
+bundle install
+```
+
+### Do some changes
+```bash
+vi lib/acts_as_method_cacheable.rb
+```
+
+### Run test
+```bash
+bundle exec rspec spec
 ```
