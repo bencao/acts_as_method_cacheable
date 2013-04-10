@@ -1,7 +1,26 @@
 ## acts_as_method_cacheable
 
-Instead of writing def expensive { @cached_expensive ||= original_expensive }, now you can write instance.cache_method(:expensive) instead. Also support nested cache method for associations.
-*This gem depend on ActiveSupport/ActiveRecord*
+Instead of writing 
+```ruby
+def expensive_method 
+  @cached_expensive ||= _expensive_method
+end
+
+def _expensive_method
+  sleep 10
+  # blablabla
+end
+```
+now you can write 
+```ruby
+post = Post.find xxx
+post.cache_method(:expensive_method) 
+# post has_many comments
+post.cache_method(:comments => :comment_expensive_method)
+```
+instead. Also support cache method for child associations.
+
+*This gem depends on ActiveSupport/ActiveRecord*
 
 ## Currernt Limitation
 **ONLY support method with no params**
@@ -33,14 +52,14 @@ class Post < ActiveRecord::Base
 end
 ```
 
-### cache methods for a instance only
+### cache methods for an instance only
 ```ruby
 post = Post.find(xxx)
 post.cache_method(:expensive_method)
 post.cache_method([:expensive_method1, :expensive_method2])
 ```
 
-### cache methods for a instance and its associations
+### cache methods for an instance and its associations
 ```ruby
 post = Post.find(xxx)
 post.cache_method([:expensive_method3, :comments => :comment_expensive_method])
@@ -75,16 +94,16 @@ say you git clone the source code to /tmp/acts_as_method_cacheable
 
 ### Install dev bundle
 ```bash
-cd /tmp/acts_as_method_cacheable
-bundle install
+$ cd /tmp/acts_as_method_cacheable
+$ bundle install
 ```
 
 ### Do some changes
 ```bash
-vi lib/acts_as_method_cacheable.rb
+$ vi lib/acts_as_method_cacheable.rb
 ```
 
 ### Run test
 ```bash
-bundle exec rspec spec
+$ bundle exec rspec spec
 ```
