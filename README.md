@@ -1,11 +1,12 @@
 ## acts_as_method_cacheable
 
 [![Gem Version](https://badge.fury.io/rb/acts_as_method_cacheable.png)](http://badge.fury.io/rb/acts_as_method_cacheable)
+[![Build Status](https://travis-ci.org/bencao/acts_as_method_cacheable.png)](https://travis-ci.org/bencao/acts_as_method_cacheable)
 
-Instead of writing 
+Instead of writing
 ```ruby
 class Post < ActiveRecord::Base
-  def expensive_method 
+  def expensive_method
     @cached_expensive ||= _expensive_method
   end
 
@@ -15,7 +16,7 @@ class Post < ActiveRecord::Base
   end
 end
 ```
-now you can write 
+now you can write
 ```ruby
 class Post < ActiveRecord::Base
   def expensive_method
@@ -29,7 +30,7 @@ end
 or cache method for an instance of Post only
 ```ruby
 post = Post.find xxx
-post.cache_method(:expensive_method) 
+post.cache_method(:expensive_method)
 # post has_many comments
 post.cache_method(:comments => :comment_expensive_method)
 ```
