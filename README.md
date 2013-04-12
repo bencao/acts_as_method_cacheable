@@ -1,5 +1,7 @@
 ## acts_as_method_cacheable
 
+[![Gem Version](https://badge.fury.io/rb/acts_as_method_cacheable.png)](http://badge.fury.io/rb/acts_as_method_cacheable)
+
 Instead of writing 
 ```ruby
 class Post < ActiveRecord::Base
