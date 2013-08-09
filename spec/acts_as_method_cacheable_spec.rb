@@ -193,6 +193,24 @@ describe ActsAsMethodCacheable do
       post.comment_signatures
     end
 
+    it "should clear cached after reset cache" do
+      post = Post.find(@post.id)
+      post.cache_method([:comment_dates, {:comments => :signature}])
+
+      comment1, comment2 = post.comments.to_a
+
+      comment1.expects(:date).once
+      post.comment_dates
+
+      comment1.expects(:date).never
+      post.comment_dates
+
+      post.reset_cache(:comment_dates)
+
+      comment1.expects(:date).once
+      post.comment_dates
+    end
+
     it "should raise exception when trying to cache a non-existing method" do
       expect {
         post = Post.find(@post.id)

@@ -44,6 +44,10 @@ module ActsAsMethodCacheable
       end
     end
 
+    def reset_cache(method)
+      remove_instance_variable(cache_var_name(method)) if cache_var_defined?(method)
+    end
+
     def cache_method(params)
       normalize_cachable_params(params) do |self_methods, association_methods|
         self_methods.each { |method| _cache_method(method) }
@@ -92,10 +96,6 @@ module ActsAsMethodCacheable
           end
         end
       CACHEEND
-    end
-
-    def reset_cache(method)
-      remove_instance_variable(cache_var_name(method)) if cache_var_defined?(method)
     end
 
     def cache_var_name(method)
