@@ -2,7 +2,6 @@
 
 [![Gem Version](https://badge.fury.io/rb/acts_as_method_cacheable.png)](http://badge.fury.io/rb/acts_as_method_cacheable)
 [![Build Status](https://travis-ci.org/bencao/acts_as_method_cacheable.png)](https://travis-ci.org/bencao/acts_as_method_cacheable)
-[![Code Climate](https://codeclimate.com/repos/520482e556b10239110072c6/badges/5d7096d9ed502ba874ac/gpa.png)](https://codeclimate.com/repos/520482e556b10239110072c6/feed)
 
 Instead of writing
 ```ruby
